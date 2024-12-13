@@ -2,26 +2,18 @@ const express = require('express');
 const { create } = require('express-handlebars'); // Mudança na importação
 const app = express();
 const path = require('path');
-const { engine } = require('express-handlebars'); 
-
 
 // Configuração do motor Handlebars
-const exphbs = create(); // Mudança na criação do motor
+const exphbs = create({
+  defaultLayout: 'main', // Layout padrão
+  partialsDir: path.join(__dirname, 'views/partials') // Diretório de partials
+});
+
 app.engine('handlebars', exphbs.engine); // Passando a engine corretamente
 app.set('view engine', 'handlebars');
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
-app.use(express.static(path.join(__dirname, '/')));
-
-
-// Servir arquivos estáticos
-app.use(express.static('assets'));
-
-app.engine('handlebars', engine({   // Alteração aqui
-  defaultLayout: 'main',
-  partialsDir: path.join(__dirname, 'views/partials')
-}));
-app.set('view engine', 'handlebars');
+// Definição do caminho para arquivos estáticos
+app.use(express.static(path.join(__dirname, 'assets')));
 
 // Rota para a home
 app.get('/', (req, res) => {
@@ -57,15 +49,13 @@ app.get('/', (req, res) => {
         communityDescription: 'Quer participar da construção de novos níveis e melhorar a experiência do nosso jogo?',
         communityButton: 'Saiba mais',
         communityImage: 'https://images.cointelegraph.com/cdn-cgi/image/format=auto,onerror=redirect,quality=90,width=1200/https://s3.cointelegraph.com/storage/uploads/view/4b1417840de8a47fc0b1c816b3f8b369.jpg',
-        
     });
 });
 
 // Rota para o fórum
 app.get('/forum', (req, res) => {
-  res.render('forum');  // Renderiza o template 'forum.ejs'
+  res.render('forum');  // Renderiza o template 'forum.handlebars'
 });
-
 
 // Iniciar o servidor
 app.listen(3000, () => {
