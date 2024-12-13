@@ -16,7 +16,7 @@ html, body {
   min-height: 100vh;
   max-height: 100vh;
   margin: 0;
-  background-image: linear-gradient(to right bottom, #423194 0%, #4f4299, #079c02 65%, #6bd63f 100%);
+  background: linear-gradient(to right bottom, #423194 0%, #4f4299, #079c02 65%, #6bd63f 100%);
   transition: background-image 1s ease-in-out;
   font-family: Arial, sans-serif;
   /* Cor de fundo escura */

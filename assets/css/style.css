@@ -16,7 +16,7 @@ body {
 	/* Exibição flexível.                          */
 	/* Torna o elemento um flex container          */
 	/* e os seus elementos internos em flex-itens. */
-	background-image: linear-gradient(to bottom right, #423194, #079c02); 
+	background: linear-gradient(to bottom right, #423194, #079c02); 
 	display: flex;
 
 	/* Quebra de linha quando os itens não couberem na largura da tela. */
