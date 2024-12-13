@@ -1,0 +1,192 @@
+/* Estilo básico para toda a página */
+
+* {
+	/* Remove a margem externa de todos os lados do elemento. */
+	margin: 0;
+
+	/* Remove o espaçamento interno de todos os lados do elemento. */
+	padding: 0;
+
+	/* Inclui o preenchimento e a borda na largura e altura. */
+	box-sizing: border-box;
+  
+}
+
+html, body {
+  min-height: 100vh;
+  max-height: 100vh;
+  margin: 0;
+  background-image: linear-gradient(to right bottom, #423194 0%, #4f4299, #079c02 65%, #6bd63f 100%);
+  transition: background-image 1s ease-in-out;
+  font-family: Arial, sans-serif;
+  /* Cor de fundo escura */
+  color: #fff; /* Texto branco para contraste */
+  
+}
+
+.user-footer {
+  padding: 20px 0;
+  position: relative;
+  top: 0;
+  margin-top: -100px;
+  width: 100%;
+  z-index: 1000; /* Garante que o footer fique acima dos outros elementos */
+}
+
+.user-footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.user-footer .search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-footer .search-form input {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  width: 250px;
+}
+
+.user-footer .search-form button {
+  background-color: #ffcc00;
+  border: none;
+  padding: 8px 12px;
+  margin-left: 10px;
+  border-radius: 5px;
+  color: #181a2e;
+  font-weight: bold;
+}
+
+.user-footer .auth-links {
+  font-size: 1.1em;
+  color: #fff;
+}
+
+.user-footer .auth-links a {
+  text-decoration: none;
+  color: #ffcc00;
+}
+
+.user-footer .auth-links a:hover {
+  text-decoration: underline;
+}
+
+/* Main container */
+main {
+  display: flex;
+  flex-direction: column;
+  margin-top: -65px;
+}
+
+/* O conteúdo é limitado em largura e centralizado */
+.container {
+  width: 100%;
+  max-width: 1100px;  /* Ajuste para a largura desejada */
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* Título principal */
+h1 {
+  font-size: 2rem;
+  color: #fff;  /* Título branco */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Estilo das categorias */
+.category {
+  margin-bottom: 30px;
+}
+
+/* Título das categorias */
+h2 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #f39c12;  /* Laranja dourado para o título das categorias */
+  font-weight: bold;
+  border-bottom: 2px solid #f39c12; /* Linha dourada embaixo do título */
+  padding-bottom: 10px;
+}
+
+/* Estilo para a lista de tópicos */
+.topics-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* Estilo individual para cada tópico */
+.topic {
+  background-color: #2c3e50; /* Azul escuro para o fundo dos tópicos */
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse sobre o tópico */
+.topic:hover {
+  background-color: #34495e; /* Azul mais claro ao passar o mouse */
+}
+
+/* Estilo para os links dos tópicos */
+.topic a {
+  text-decoration: none;
+  color: #ecf0f1;  /* Cor clara para os links */
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.topic a:hover {
+  text-decoration: underline;
+  color: #f39c12; /* Laranja dourado ao passar o mouse */
+}
+
+/* Detalhes dos tópicos (quantidade de posts e mensagens) */
+.details {
+  font-size: 0.9rem;
+  color: #bdc3c7; /* Cor mais suave para os detalhes */
+  margin-top: 5px;
+}
+
+/* Data do último post */
+.last-post {
+  font-size: 0.8rem;
+  color: #95a5a6; /* Cor mais suave para o último post */
+  margin-top: 5px;
+}
+
+
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .topic {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+
+  .details {
+    font-size: 0.8rem;
+  }
+
+}

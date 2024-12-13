@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórum de Jogos</title>
+    <link rel="stylesheet" href="/assets/style2.css">
+</head>
+<body>
+    {{> header}} <!-- Incluindo o header -->
+    <div class="user-footer">
+        <div class="container">
+            <form class="search-form">
+                <input type="text" placeholder="Pesquisar...">
+                <button type="submit">🔍</button>
+            </form>
+            <div class="auth-links">
+                <a href="#">Login</a>
+                <span> | </span>
+                <a href="#">Registrar</a>
+            </div>
+        </div>
+    </div>
+    <main>
+
+        <div class="container">
+            <section class="forum">
+                <!-- Categoria de Jogos Populares -->
+                <div class="category">
+                    <h2>Jogos Populares</h2>
+                    <ul class="topics-list">
+                        <li class="topic">
+                            <span class="icon">💬</span>
+                            <a href="#">Estratégias para vitória no Guardião</a>
+                            <div class="details">
+                                <span class="posts">Tópicos: 82.2K</span>
+                                <span class="messages">Mensagens: 1.1M</span>
+                            </div>
+                            <span class="last-post">Último post: 22 minutos atrás</span>
+                        </li>
+                        <li class="topic">
+                            <span class="icon">💬</span>
+                            <a href="#">Dicas para iniciantes no Guardião</a>
+                            <div class="details">
+                                <span class="posts">Tópicos: 70.5K</span>
+                                <span class="messages">Mensagens: 1.4M</span>
+                            </div>
+                            <span class="last-post">Último post: 9 minutos atrás</span>
+                        </li>
+                        <li class="topic">
+                            <span class="icon">💬</span>
+                            <a href="#">Como derrotar o chefe final</a>
+                            <div class="details">
+                                <span class="posts">Tópicos: 10.5K</span>
+                                <span class="messages">Mensagens: 50.1K</span>
+                            </div>
+                            <span class="last-post">Último post: 1 hora atrás</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Categoria de Estratégias Avançadas -->
+                <div class="category">
+                    <h2>Estratégias Avançadas</h2>
+                    <ul class="topics-list">
+                        <li class="topic">
+                            <span class="icon">💬</span>
+                            <a href="#">Melhorar habilidades de combate</a>
+                            <div class="details">
+                                <span class="posts">Tópicos: 10.5K</span>
+                                <span class="messages">Mensagens: 99.4K</span>
+                            </div>
+                            <span class="last-post">Último post: 12 minutos atrás</span>
+                        </li>
+                        <li class="topic">
+                            <span class="icon">💬</span>
+                            <a href="#">Equipamentos e estratégias para batalhas</a>
+                            <div class="details">
+                                <span class="posts">Tópicos: 7.8K</span>
+                                <span class="messages">Mensagens: 89K</span>
+                            </div>
+                            <span class="last-post">Último post: Hoje às 09:42</span>
+                        </li>
+                        <li class="topic">
+                            <span class="icon">💬</span>
+                            <a href="#">Táticas para jogo cooperativo</a>
+                            <div class="details">
+                                <span class="posts">Tópicos: 3.4K</span>
+                                <span class="messages">Mensagens: 50.1K</span>
+                            </div>
+                            <span class="last-post">Último post: Ontem às 18:30</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Nova Categoria: Ideias para o Jogo -->
+                <div class="category">
+                    <h2>Ideias para o Jogo</h2>
+                    <ul class="topics-list">
+                        <li class="topic">
+                            <span class="icon">💬</span>
+                            <a href="#">Sugestões para novos mapas</a>
+                            <div class="details">
+                                <span class="posts">Tópicos: 5.3K</span>
+                                <span class="messages">Mensagens: 23.5K</span>
+                            </div>
+                            <span class="last-post">Último post: 1 hora atrás</span>
+                        </li>
+                        <li class="topic">
+                            <span class="icon">💬</span>
+                            <a href="#">Novos personagens e habilidades</a>
+                            <div class="details">
+                                <span class="posts">Tópicos: 2.1K</span>
+                                <span class="messages">Mensagens: 10.7K</span>
+                            </div>
+                            <span class="last-post">Último post: 3 horas atrás</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Nova Categoria: Sugestões para Ajudar o Meio Ambiente -->
+                <div class="category">
+                    <h2>Sugestões para Ajudar o Meio Ambiente</h2>
+                    <ul class="topics-list">
+                        <li class="topic">
+                            <span class="icon">💬</span>
+                            <a href="#">Problemas ambientais</a>
+                            <div class="details">
+                                <span class="posts">Tópicos: 1.5K</span>
+                                <span class="messages">Mensagens: 8.3K</span>
+                            </div>
+                            <span class="last-post">Último post: 30 minutos atrás</span>
+                        </li>
+                        <li class="topic">
+                            <span class="icon">💬</span>
+                            <a href="#">Iniciativas de reciclagem </a>
+                            <div class="details">
+                                <span class="posts">Tópicos: 3.0K</span>
+                                <span class="messages">Mensagens: 15.4K</span>
+                            </div>
+                            <span class="last-post">Último post: 2 dias atrás</span>
+                        </li>
+                        <li class="topic">
+                            <span class="icon">💬</span>
+                            <a href="#">Outras organizações para doar</a>
+                            <div class="details">
+                                <span class="posts">Tópicos: 5.0K</span>
+                                <span class="messages">Mensagens: 15.4K</span>
+                            </div>
+                            <span class="last-post">Último post: 2 dias atrás</span>
+                        </li>
+                    </ul>
+                </div>
+                
+            </section>
+             
+        </div>
+         
+{{> footer}}
+    </main>
+    
+
+   
+</body>
+</html>

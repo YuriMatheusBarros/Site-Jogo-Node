@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  {{> header}}
+    <main>
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img class="slide1" src="https://static.vecteezy.com/ti/vetor-gratis/p1/11484149-menu-de-jogo-de-fazenda-de-pixel-art-tela-inicial-do-jogo-de-8-bits-com-fundo-de-paisagem-noturna-vetor.jpg" alt="Slide 1">
+                <img src="https://www.greenpeace.org/static/planet4-brasil-stateless/2021/07/22fa7cc6-gp0stqx0a_edited-e1532367336723-b.jpg" alt="Slide 2">
+                <img src="https://img.itch.zone/aW1nLzE1MDMzNDM4LnBuZw==/original/IwIn7J.png" alt="Slide 3">
+                <img src="https://invogames.s3.us-east-2.amazonaws.com/Pixel_Art_Bannar_1_6ea024d4a2_ab9355db06.jpg" alt="Slide 4">
+            </div>
+
+            <div class="carousel-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+                <span class="indicator" data-slide="3"></span>
+            </div>
+        </div>
+    </main>
+
+    <section class="secao-rodape promocao-jogo">
+        <h1>{{promoTitle}}</h1>
+        <p>{{promoDescription}}</p>
+        <button>{{promoButton}}</button>
+        <br>
+        <img src="{{promoImage}}" alt="Personagem do jogo">
+    </section>
+
+    <section class="secao-rodape consciencia-ambiental">
+        <div class="informação-1">   
+            <h1>{{envTitle}}</h1>
+            <p>{{envDescription}}</p>
+            <button>{{envButton}}</button>
+        </div>
+        <img class="imagem-ambiente" src="{{envImage}}" alt="Preservação do meio ambiente">
+    </section>
+
+    <section class="secao-rodape atualizacoes">
+        <h1>{{updatesTitle}}</h1>
+        <div class="cartoes-atualizacoes">
+            {{#each updates}}
+            <div class="cartao">
+                <img src="{{this.image}}" alt="Imagem da atualização">
+                <h3>{{this.title}}</h3>
+                <br>
+                <p>{{this.description}}</p>
+            </div>
+            {{/each}}
+        </div>
+    </section>
+
+    <section class="secao-rodape comunidade">
+        <div class="informação-2">  
+            <h1>{{communityTitle}}</h1>
+            <p>{{communityDescription}}</p>
+            <button>{{communityButton}}</button>
+        </div>
+        <img class="imagem-comunidade" src="{{communityImage}}" alt="Comunidade">
+    </section>
+
+    {{> footer}}
+
+    <script src="/assets/js/script.js"></script>
+
+</body>
+</html>
