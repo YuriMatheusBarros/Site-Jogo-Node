@@ -2,6 +2,8 @@ const express = require('express');
 const { create } = require('express-handlebars'); // Mudança na importação
 const app = express();
 const path = require('path');
+const bodyParser = require('body-parser');
+
 
 // Configuração do motor Handlebars
 const exphbs = create({
@@ -14,6 +16,8 @@ app.set('view engine', 'handlebars');
 
 // Definição do caminho para arquivos estáticos
 app.use(express.static(path.join(__dirname, 'assets')));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Rota para a home
 app.get('/', (req, res) => {
@@ -55,6 +59,39 @@ app.get('/', (req, res) => {
 // Rota para o fórum
 app.get('/forum', (req, res) => {
   res.render('forum');  // Renderiza o template 'forum.handlebars'
+});
+
+app.get('/login', (req, res) => {
+    res.render('login', {
+        title: 'Login',
+        description: 'Faça login para acessar sua conta.'
+    });
+});
+
+app.get('/register', (req, res) => {
+    res.render('register', {
+        title: 'Registrar',
+        description: 'Crie uma conta para acessar o site.'
+    });
+});
+
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+
+    // Aqui você adiciona a lógica para autenticação
+    if (username === 'admin' && password === '123') {
+        return res.send('Login bem-sucedido!');
+    } else {
+        return res.send('Credenciais inválidas!');
+    }
+});
+
+app.post('/register', (req, res) => {
+    const { username, email, password } = req.body;
+
+    // Aqui você adiciona a lógica para salvar o usuário no banco de dados
+    console.log(`Novo usuário registrado: ${username} (${email})`);
+    return res.send('Registro bem-sucedido!');
 });
 
 // Iniciar o servidor
