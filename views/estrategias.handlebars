@@ -1,0 +1,24 @@
+{{> header}}
+
+<div class="container-estrategias">
+    <h1>Estratégias para Vitória no Guardião</h1>
+    {{log topicos}}
+    {{#if topicos.length}}
+    <ul>
+        {{#each topicos}}
+        <li>
+            <h2>{{titulo}}</h2>
+            <p><strong>Categoria:</strong> {{categoria}}</p>
+            <p><strong>Subcategoria:</strong> {{subcategoria}}</p>
+            <p>{{conteudo}}</p>
+        </li>
+        {{/each}}
+    </ul>
+    {{else}}
+    <p>Nenhum tópico encontrado.</p>
+    {{/if}}
+
+    
+</div>
+
+{{> footer}}

@@ -2,14 +2,18 @@
   background-color: #e0f7fa;
   font-family: Arial, sans-serif;
   color: #333;
+  display: flex;
+  justify-content: center;
+  
 }
 
 .container-registro {
   max-width: 600px;
   height: 600px;
-  margin: -10px auto;
+  margin-top: 20px;
+  margin-bottom: 90px;
   padding: 20px;
-  background-color: white;
+  background-color: #2c3e50;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -18,13 +22,14 @@
   text-align: center;
   margin-bottom: 50px;
   margin-top: 50px;
-  color: #333;
+  color: #ffffff;
 }
 
 .formulario-registro label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+  color: white;
 }
 
 .formulario-registro input {
@@ -38,7 +43,7 @@
 .botao-registro {
   width: 100%;
   padding: 10px;
-  background-color: #007bb5;
+  background-color: #4caf50;;
   color: white;
   border: none;
   border-radius: 4px;
@@ -46,10 +51,11 @@
 }
 
 .botao-registro:hover {
-  background-color: #005f8f;
+  background-color: #45a049;
 }
 
 .link-login {
   text-align: center;
   margin-top: 15px;
+  color: white;
 }

@@ -1,0 +1,135 @@
+body.pagina-doacao {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  overflow: hidden;
+}
+
+.containerAjudar {
+  position: relative;
+  left: 0px;
+  max-width: 1200px;
+  margin: 0 auto;
+ 
+}
+
+.titulo {
+  font-size: 2.4em;
+  color: #00ff88;
+}
+
+.titulo1 {  
+  text-align: center;
+  color: #d0f7d0;
+  margin-bottom: 30px;
+  font-size: 1.1em;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  background-color: #143714;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  transition: transform 0.3s ease;
+  
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-greenpeace {
+  border-left: 8px solid #079c02;
+  background-image: url('./imgs/greenpeace.webp');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 100px 100px;
+  padding-left: 100px; /* Ajuste para espaçar o conteúdo do texto em relação à imagem */
+}
+
+.card-wwf {
+  border-left: 8px solid #009688;
+  background-image: url('./imgs/wwf.jpeg');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 100px 100px;
+  padding-left: 100px; /* Ajuste para espaçar o conteúdo do texto em relação à imagem */
+}
+
+.card-Pantanal {
+  border-left: 8px solid #3cb371; 
+  background-image: url('./imgs/sos-patanal.c05e7e7a.jpeg');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 100px 100px;
+  padding-left: 100px; /* Ajuste para espaçar o conteúdo do texto em relação à imagem */
+}
+
+.card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.card-title {
+  font-size: 1.5em;
+  color: #d0f7d0;
+  margin: 0 0 10px;
+}
+
+.card-description {
+  font-size: 1em;
+  color: #d0f7d0;
+  margin-bottom: 15px;
+}
+
+button {
+  background-color: #3cb371;
+  color: #000000;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #00ff88;
+}
+
+
+
+@media (max-width: 768px) {
+  .card {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .card img {
+      margin: 0 auto 15px;
+  }
+
+  .card-content {
+      margin-left: 0;
+  }
+
+  button {
+      align-self: center;
+  }
+}

@@ -1,0 +1,30 @@
+<body class="suporte">
+  {{> header}}
+    <div class="container-suporte">
+        <h1 class="titulo-suporte">Central de Suporte - Guardian</h1>
+        <form class="formulario-suporte">
+            <label for="nome-suporte">Nome:</label>
+            <input type="text" id="nome-suporte" name="nome" placeholder="Digite seu nome completo" required>
+
+            <label for="email-suporte">Email:</label>
+            <input type="email" id="email-suporte" name="email" placeholder="Digite seu email" required>
+
+            <label for="assunto-suporte">Assunto:</label>
+            <select id="assunto-suporte" name="assunto" required>
+                <option value="">Selecione o assunto</option>
+                <option value="problemas-conta">Problemas com a conta</option>
+                <option value="pagamento">Dúvidas sobre pagamento</option>
+                <option value="bugs">Relatar um bug</option>
+                <option value="outros">Outros</option>
+            </select>
+
+            <label for="mensagem-suporte">Mensagem:</label>
+            <textarea id="mensagem-suporte" name="mensagem" placeholder="Descreva sua dúvida ou problema" required></textarea>
+
+            <p class="aviso-obrigatorio">* Todos os campos são obrigatórios.</p>
+
+            <button type="submit" class="botao-suporte">Enviar</button>
+        </form>
+    </div>
+  {{> footer}}
+</body>

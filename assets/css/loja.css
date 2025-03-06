@@ -1,0 +1,89 @@
+:root {
+  --cor-fundo-card: #143714;
+  --cor-fonte-card: #ffffff;
+  --cor-preco: #f39c12;
+  --borda-card: #4caf50;
+}
+
+body.loja {
+  overflow: hidden;
+}
+
+.loja-guardian {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 20px;
+  background-color: #12121277;
+  color: var(--cor-fonte-card);
+}
+
+.loja-guardian .card {
+  background-color: var(--cor-fundo-card);
+  border: 2px solid var(--borda-card);
+  border-radius: 8px;
+  width: calc(25% - 16px);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.loja-guardian .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.6);
+}
+
+.loja-guardian .card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.loja-guardian .card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.loja-guardian .card p {
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.loja-guardian .card .preco {
+  color: var(--cor-preco);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.loja-guardian .card button {
+  margin-top: 8px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--borda-card);
+  color: var(--cor-fonte-card);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.loja-guardian .card button:hover {
+  background-color: #e03e00;
+}
+
+@media (max-width: 768px) {
+  .loja-guardian .card {
+    width: calc(50% - 16px);
+  }
+}
+
+@media (max-width: 480px) {
+  .loja-guardian .card {
+    width: 100%;
+  }
+}

@@ -1,0 +1,119 @@
+body.configuracoes {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: #fff;
+  
+}
+
+.container-configuracoes {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-bottom: 80px;
+}
+
+.section {
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.section h2 {
+  margin-top: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 20px;
+  
+}
+
+.grid-item {
+  background-color:#2c3e50;
+  border-radius: 8px;
+  padding: 60px;
+  align-content: center;
+  
+}
+
+.grid-item h3 {
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #143714;
+  color: #fff;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  
+}
+
+.button:hover {
+  background-color: #059250;
+}
+
+.status {
+  color: #00ff00;
+  font-weight: bold;
+}
+
+.security-check {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.security-check span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-configuracoes {
+  width: 16px;
+  height: 16px;
+  background-color: #00ff00;
+  border-radius: 50%;
+}
+
+.balance {
+  color: #00ff00;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.code-input {
+  display: flex;
+  gap: 10px;
+}
+
+.code-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #555;
+  background-color: #333;
+  color: #fff;
+}
+
+.settings-icon {
+  width: 20px;
+  height: 20px;
+  background: url('https://cdn-icons-png.flaticon.com/512/189/189839.png') no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
+}

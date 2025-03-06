@@ -1,13 +1,17 @@
 
-<body>
+<body class="forum">
     {{> header}} <!-- Incluindo o header -->
     <div class="user-footer">
-        <div class="container">
+        <div class="container-forum">
             <form class="search-form">
                 <input type="text" placeholder="Pesquisar...">
                 <button type="submit">🔍</button>
             </form>
+            
+            
             <div class="auth-links">
+                <a href="/topico">Crie um tópico</a>
+                <span> | </span>
                 <a href="/login">Login</a>
                 <span> | </span>
                 <a href="/register">Registrar</a>
@@ -16,22 +20,22 @@
     </div>
     <main>
 
-        <div class="container">
+        <div class="container-forum">
             <section class="forum">
                 <!-- Categoria de Jogos Populares -->
                 <div class="category">
-                    <h2>Jogos Populares</h2>
+                    <h2>Jogadas Populares</h2>
                     <ul class="topics-list">
-                        <li class="topic">
+                        <li class="topic-forum">
                             <span class="icon">💬</span>
-                            <a href="#">Estratégias para vitória no Guardião</a>
+                            <a href="/estrategias">Estratégias para vitória no Guardião</a>
                             <div class="details">
                                 <span class="posts">Tópicos: 82.2K</span>
                                 <span class="messages">Mensagens: 1.1M</span>
                             </div>
                             <span class="last-post">Último post: 22 minutos atrás</span>
                         </li>
-                        <li class="topic">
+                        <li class="topic-forum">
                             <span class="icon">💬</span>
                             <a href="#">Dicas para iniciantes no Guardião</a>
                             <div class="details">
@@ -40,7 +44,7 @@
                             </div>
                             <span class="last-post">Último post: 9 minutos atrás</span>
                         </li>
-                        <li class="topic">
+                        <li class="topic-forum">
                             <span class="icon">💬</span>
                             <a href="#">Como derrotar o chefe final</a>
                             <div class="details">
@@ -56,7 +60,7 @@
                 <div class="category">
                     <h2>Estratégias Avançadas</h2>
                     <ul class="topics-list">
-                        <li class="topic">
+                        <li class="topic-forum">
                             <span class="icon">💬</span>
                             <a href="#">Melhorar habilidades de combate</a>
                             <div class="details">
@@ -65,7 +69,7 @@
                             </div>
                             <span class="last-post">Último post: 12 minutos atrás</span>
                         </li>
-                        <li class="topic">
+                        <li class="topic-forum">
                             <span class="icon">💬</span>
                             <a href="#">Equipamentos e estratégias para batalhas</a>
                             <div class="details">
@@ -74,7 +78,7 @@
                             </div>
                             <span class="last-post">Último post: Hoje às 09:42</span>
                         </li>
-                        <li class="topic">
+                        <li class="topic-forum">
                             <span class="icon">💬</span>
                             <a href="#">Táticas para jogo cooperativo</a>
                             <div class="details">
@@ -90,7 +94,7 @@
                 <div class="category">
                     <h2>Ideias para o Jogo</h2>
                     <ul class="topics-list">
-                        <li class="topic">
+                        <li class="topic-forum">
                             <span class="icon">💬</span>
                             <a href="#">Sugestões para novos mapas</a>
                             <div class="details">
@@ -99,7 +103,7 @@
                             </div>
                             <span class="last-post">Último post: 1 hora atrás</span>
                         </li>
-                        <li class="topic">
+                        <li class="topic-forum">
                             <span class="icon">💬</span>
                             <a href="#">Novos personagens e habilidades</a>
                             <div class="details">
@@ -115,7 +119,7 @@
                 <div class="category">
                     <h2>Sugestões para Ajudar o Meio Ambiente</h2>
                     <ul class="topics-list">
-                        <li class="topic">
+                        <li class="topic-forum">
                             <span class="icon">💬</span>
                             <a href="#">Problemas ambientais</a>
                             <div class="details">
@@ -124,7 +128,7 @@
                             </div>
                             <span class="last-post">Último post: 30 minutos atrás</span>
                         </li>
-                        <li class="topic">
+                        <li class="topic-forum">
                             <span class="icon">💬</span>
                             <a href="#">Iniciativas de reciclagem </a>
                             <div class="details">
@@ -133,7 +137,7 @@
                             </div>
                             <span class="last-post">Último post: 2 dias atrás</span>
                         </li>
-                        <li class="topic">
+                        <li class="topic-forum">
                             <span class="icon">💬</span>
                             <a href="#">Outras organizações para doar</a>
                             <div class="details">

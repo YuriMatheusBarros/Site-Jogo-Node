@@ -1,13 +1,6 @@
 @charset "UTF-8";
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    background: linear-gradient(to bottom right, #423194, #079c02); 
+    background: linear-gradient(to bottom  , #413194, #079c02); 
     display: flex;
     flex-wrap: wrap;
     flex: 1 1 100vw;
@@ -128,6 +121,11 @@ main {
     background-image: linear-gradient(to bottom right, #423194, #000000); 
 }
 
+.conteudo-ambiente {
+    display: flex;
+    flex-direction: column;
+} 
+
 .consciencia-ambiental {
     display: flex;
     gap: 30px;
@@ -145,6 +143,11 @@ main {
     display: flex;
     gap: 30px;
     background-image: linear-gradient(to bottom right, #1e90ff, #1e3cff); 
+}
+
+.conteudo-comunidade {
+    display: flex;
+    flex-direction: column;
 }
 
 .secao-rodape {

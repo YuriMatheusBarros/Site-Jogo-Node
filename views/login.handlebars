@@ -1,7 +1,7 @@
 
- 
+{{> header}}
+
 <body id="pagina-login">
-   {{> header}}
   <main class="container-login">
     <h1 class="titulo-login">Entrar</h1>
     <form class="formulario-login" action="/login" method="POST">
@@ -12,11 +12,12 @@
       <button type="submit" class="botao-login">Entrar</button>
     </form>
     <p class="link-registro">
-      Ainda não tem uma conta? <a href="/register">Cadastre-se</a>
+      Ainda não tem uma conta? <a href="/register"> <a href="./register"> <u>Cadastre-se</u></a>
     </p>
   </main>
 </body>
 
+{{> footer}}
 
   
 

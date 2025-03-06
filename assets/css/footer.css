@@ -1,7 +1,8 @@
 
 footer {
 	/* Altura do elemento. */
-	max-height: 100px;
+	max-height: 20px;
+	
 
 	/* Junção de flex-grow, flex-shrink e flex-basis.  */
 	/* flex-grow – Habilidade de um flex item crescer. */

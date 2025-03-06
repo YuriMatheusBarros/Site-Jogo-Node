@@ -1,0 +1,44 @@
+body.noticias {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.container-noticias {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.noticia {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 50px 0;
+  border-bottom: 1px solid #FFFFFF55;
+  text-decoration: none;
+  color: white;
+}
+.noticia:hover {
+  background-color: #003a8c;
+}
+.noticia img {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.noticia .conteudo {
+  flex: 1;
+}
+.noticia .titulo {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+.noticia .descricao {
+  font-size: 14px;
+  margin: 0 0 5px;
+}
+.noticia .data {
+  font-size: 12px;
+  opacity: 0.8;
+}

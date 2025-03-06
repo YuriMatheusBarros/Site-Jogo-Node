@@ -1,10 +1,9 @@
 
-html, body {
+html, body.forum {
   min-height: 100vh;
   max-height: 100vh;
   margin: 0;
-  background: linear-gradient(to right bottom, #423194 0%, #4f4299, #079c02 65%, #6bd63f 100%);
-  transition: background-image 1s ease-in-out;
+  
   font-family: Arial, sans-serif;
   /* Cor de fundo escura */
   color: #fff; /* Texto branco para contraste */
@@ -20,7 +19,7 @@ html, body {
   z-index: 1000; /* Garante que o footer fique acima dos outros elementos */
 }
 
-.user-footer .container {
+.user-footer .container-forum {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -74,9 +73,9 @@ main {
 }
 
 /* O conteúdo é limitado em largura e centralizado */
-.container {
+.container-forum {
   width: 100%;
-  max-width: 1100px;  /* Ajuste para a largura desejada */
+  max-width: 1200px;  /* Ajuste para a largura desejada */
   margin: 0 auto;
   padding: 20px 0;
 }
@@ -111,7 +110,7 @@ h2 {
 }
 
 /* Estilo individual para cada tópico */
-.topic {
+.topic-forum {
   background-color: #2c3e50; /* Azul escuro para o fundo dos tópicos */
   margin-bottom: 15px;
   padding: 15px;
@@ -120,19 +119,19 @@ h2 {
 }
 
 /* Efeito ao passar o mouse sobre o tópico */
-.topic:hover {
+.topic-forum:hover {
   background-color: #34495e; /* Azul mais claro ao passar o mouse */
 }
 
 /* Estilo para os links dos tópicos */
-.topic a {
+.topic-forum a {
   text-decoration: none;
   color: #ecf0f1;  /* Cor clara para os links */
   font-weight: bold;
   font-size: 1rem;
 }
 
-.topic a:hover {
+.topic-forum a:hover {
   text-decoration: underline;
   color: #f39c12; /* Laranja dourado ao passar o mouse */
 }
@@ -151,11 +150,29 @@ h2 {
   margin-top: 5px;
 }
 
+#user-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #ccc; /* Cor padrão quando não há login */
+  display: inline-block;
+  background-size: cover;
+  background-position: center;
+}
+
+.default-icon {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/1077/1077063.png'); /* Ícone padrão */
+}
+
+#user-container img {
+  border-radius: 50%;
+}
+
 
 
 /* Responsividade para telas menores */
 @media (max-width: 768px) {
-  .container {
+  .container-forum {
     padding: 10px;
   }
 
@@ -167,7 +184,7 @@ h2 {
     font-size: 1.2rem;
   }
 
-  .topic {
+  .topic-forum {
     font-size: 0.9rem;
     padding: 12px;
   }

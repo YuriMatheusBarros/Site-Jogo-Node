@@ -1,67 +1,68 @@
+{{> header}}
 
-<body>
-  {{> header}}
-    <main>
-        <div class="carousel-container">
-            <div class="carousel-slide">
-                <img class="slide1" src="https://static.vecteezy.com/ti/vetor-gratis/p1/11484149-menu-de-jogo-de-fazenda-de-pixel-art-tela-inicial-do-jogo-de-8-bits-com-fundo-de-paisagem-noturna-vetor.jpg" alt="Slide 1">
-                <img src="https://www.greenpeace.org/static/planet4-brasil-stateless/2021/07/22fa7cc6-gp0stqx0a_edited-e1532367336723-b.jpg" alt="Slide 2">
-                <img src="https://img.itch.zone/aW1nLzE1MDMzNDM4LnBuZw==/original/IwIn7J.png" alt="Slide 3">
-                <img src="https://invogames.s3.us-east-2.amazonaws.com/Pixel_Art_Bannar_1_6ea024d4a2_ab9355db06.jpg" alt="Slide 4">
-            </div>
-
-            <div class="carousel-indicators">
-                <span class="indicator active" data-slide="0"></span>
-                <span class="indicator" data-slide="1"></span>
-                <span class="indicator" data-slide="2"></span>
-                <span class="indicator" data-slide="3"></span>
-            </div>
+<main>
+    <div class="carousel-container">
+        <div class="carousel-slide">
+            <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/11484149-menu-de-jogo-de-fazenda-de-pixel-art-tela-inicial-do-jogo-de-8-bits-com-fundo-de-paisagem-noturna-vetor.jpg" alt="Slide 1">
+            <img src="https://www.greenpeace.org/static/planet4-brasil-stateless/2021/07/22fa7cc6-gp0stqx0a_edited-e1532367336723-b.jpg" alt="Slide 2">
+            <img src="https://img.itch.zone/aW1nLzE1MDMzNDM4LnBuZw==/original/IwIn7J.png" alt="Slide 3">
+            <img src="https://invogames.s3.us-east-2.amazonaws.com/Pixel_Art_Bannar_1_6ea024d4a2_ab9355db06.jpg" alt="Slide 4">
         </div>
-    </main>
 
-    <section class="secao-rodape promocao-jogo">
-        <h1>{{promoTitle}}</h1>
-        <p>{{promoDescription}}</p>
-        <button>{{promoButton}}</button>
-        <br>
-        <img src="{{promoImage}}" alt="Personagem do jogo">
-    </section>
-
-    <section class="secao-rodape consciencia-ambiental">
-        <div class="informação-1">   
-            <h1>{{envTitle}}</h1>
-            <p>{{envDescription}}</p>
-            <button>{{envButton}}</button>
+        <div class="carousel-indicators">
+            <span class="indicator active" data-slide="0"></span>
+            <span class="indicator" data-slide="1"></span>
+            <span class="indicator" data-slide="2"></span>
+            <span class="indicator" data-slide="3"></span>
         </div>
-        <img class="imagem-ambiente" src="{{envImage}}" alt="Preservação do meio ambiente">
-    </section>
+    </div>
+</main>
 
-    <section class="secao-rodape atualizacoes">
-        <h1>{{updatesTitle}}</h1>
-        <div class="cartoes-atualizacoes">
-            {{#each updates}}
-            <div class="cartao">
-                <img src="{{this.image}}" alt="Imagem da atualização">
-                <h3>{{this.title}}</h3>
-                <br>
-                <p>{{this.description}}</p>
-            </div>
-            {{/each}}
+<section class="secao-rodape promocao-jogo">
+    <h1>Jogue com seu personagem favorito</h1>
+    <p>Seja um campeão e ajude a salvar o mundo com seu herói favorito.</p>
+    <button>Jogue agora!</button>
+    <br>
+    <img src="https://i.redd.it/ckp5gcuzv7581.gif" alt="Personagem do jogo">
+</section>
+
+<section class="secao-rodape consciencia-ambiental">
+    <div class="conteudo-ambiente">
+    <h1>Ajude o meio ambiente!</h1>
+    <p>Nosso jogo tem o propósito de engajar e promover ações que trazem mudanças positivas ao meio ambiente.</p>
+    <button>Saiba mais</button>
+    </div>
+    <img class="imagem-ambiente" src="https://static.escolakids.uol.com.br/2021/03/1-preservacao-meio-ambiente.jpg" alt="Preservação do meio ambiente">
+</section>
+
+<section class="secao-rodape atualizacoes">
+    <h1>Confira as atualizações</h1>
+    <div class="cartoes-atualizacoes">
+        <div class="cartao">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDSnq2Mr5uzaFXrIz6Yyk1k_fpZhjYRprJsgxlkaArJ3H5ScreRxOF4PYqGQXjy76Sbt3Gh_WPNF3lmrVev7XWSJSPkC6-Yf0k7vl8IY6lbuUdwziUyv0S_O02QB6YhSFEglzvBe4BESad_xy7j4gyCSMt3vNVoOp3lf_yOf_QTJqrzLY65ulgKVpTLw/s1920/drova.jpg" alt="Lobby da comunidade">
+            <h3>Lobby da comunidade</h3>
+            <p>Confira o novo lobby para os jogadores interagirem e fazer amigos.</p>
         </div>
-    </section>
-
-    <section class="secao-rodape comunidade">
-        <div class="informação-2">  
-            <h1>{{communityTitle}}</h1>
-            <p>{{communityDescription}}</p>
-            <button>{{communityButton}}</button>
+        <div class="cartao">
+            <img src="https://t4.ftcdn.net/jpg/07/58/60/15/360_F_758601545_FYJWlmpvIGcPFSZSWBviXVN1LLvO3be9.jpg" alt="Novos Mapas">
+            <h3>Novos Mapas</h3>
+            <p>Mapas atualizados com mais conteúdo.</p>
         </div>
-        <img class="imagem-comunidade" src="{{communityImage}}" alt="Comunidade">
-    </section>
+        <div class="cartao">
+            <img src="https://preview.redd.it/fep8jsoojiy81.jpg?auto=webp&s=ed116aec6f8c3029f71c93685e86768045c060ad" alt="Customização melhorada">
+            <h3>Customização melhorada</h3>
+            <p>Experimente seu herói personalizado.</p>
+        </div>
+    </div>
+</section>
 
-    {{> footer}}
+<section class="secao-rodape comunidade">
+    <div class="conteudo-comunidade">
+    <h1>Entre para nossa comunidade e ajude a criar a história do nosso jogo!</h1>
+    <p>Quer participar da construção de novos níveis e melhorar a experiência do nosso jogo?</p>
+    <button>Saiba mais</button>
+    </div>
+    <img class="imagem-comunidade" src="https://images.cointelegraph.com/cdn-cgi/image/format=auto,onerror=redirect,quality=90,width=1200/https://s3.cointelegraph.com/storage/uploads/view/4b1417840de8a47fc0b1c816b3f8b369.jpg" alt="Comunidade">
+</section>
 
-    <script src="./assets/js/script.js"></script>
-
-</body>
-
+{{> footer}}
