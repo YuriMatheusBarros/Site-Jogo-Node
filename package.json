@@ -13,7 +13,6 @@
     "pg": "^8.14.1",
     "sequelize": "^6.37.5"
   },
-  "main": "server.js",
   "scripts": {
     "build": "npm run build",
     "start": "node app.js"
