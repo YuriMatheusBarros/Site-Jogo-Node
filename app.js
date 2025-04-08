@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const { create } = require('express-handlebars');
-const mysql = require('mysql2');
+const { Pool } = require('pg'); // Troca de mysql2 para pg
 const bcrypt = require('bcryptjs');
 const app = express();
 const path = require('path');
@@ -16,41 +16,29 @@ const exphbs = create({
 app.engine('handlebars', exphbs.engine);
 app.set('view engine', 'handlebars');
 
-
-// Conexão com o banco de dados MySQL
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'novo_usuario', // Substitua com seu usuário
-  password: 'nova_senha', // Substitua com sua senha
-  database: 'guardian'
-});
-
-// Conectar ao banco de dados
-db.connect((err) => {
-  if (err) {
-    console.error('Erro ao conectar ao banco de dados:', err);
-  } else {
-    console.log('Conectado ao banco de dados');
+// Conexão com o banco de dados PostgreSQL
+const db = new Pool({
+  connectionString: process.env.DATABASE_URL, // Usar URL completa do PostgreSQL
+  ssl: {
+    rejectUnauthorized: false // Necessário para Railway
   }
 });
 
-// Definição do caminho para arquivos estáticos
+// Verifica a conexão
+db.connect()
+  .then(() => console.log('Conectado ao banco de dados PostgreSQL'))
+  .catch(err => console.error('Erro ao conectar ao banco de dados:', err));
+
+// Middleware
 app.use(express.static(path.join(__dirname, './assets')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
-
-// Middleware para processar dados do formulário
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public")); // Para arquivos estáticos (HTML e CSS)
-
+// Rotas
 app.get('/', (req, res) => {
-  res.render('home'); // Apenas renderiza a página
+  res.render('home');
 });
 
-// Rota para registro
 app.get('/register', (req, res) => {
   res.render('register', {
     title: 'Registrar',
@@ -58,7 +46,6 @@ app.get('/register', (req, res) => {
   });
 });
 
-// Rota para login
 app.get('/login', (req, res) => {
   res.render('login', {
     title: 'Login',
@@ -66,61 +53,38 @@ app.get('/login', (req, res) => {
   });
 });
 
-app.get('/', (req, res) => {
-  res.render('main'); // Renderiza a página index.handlebars
-});
-
-// Rota para "Informações do Jogo"
 app.get('/informacoes', (req, res) => {
   res.render('informacoes');
 });
 
-// Rota para "Como Ajudar"
 app.get('/ajudar', (req, res) => {
   res.render('ajudar');
 });
 
-// Rota para "Notícias"
 app.get('/noticias', (req, res) => {
   res.render('noticias');
 });
 
-// Rota para "Comunidade"
 app.get('/forum', (req, res) => {
   res.render('forum');
 });
 
-// Rota para "Login"
-app.get('/login', (req, res) => {
-  res.render('login');
-});
-
-// Rota para "Perfil do GUARDIAN"
 app.get('/conta', (req, res) => {
   res.render('conta');
 });
 
-// Rota para "Configurações da conta"
 app.get('/configuracoes', (req, res) => {
   res.render('configuracoes');
 });
 
-// Rota para "Inscreva-se"
-app.get('/register', (req, res) => {
-  res.render('register');
-});
-
-// Rota para "Suporte"
 app.get('/suporte', (req, res) => {
   res.render('suporte');
 });
 
-// Rota para "Loja"
 app.get('/loja', (req, res) => {
   res.render('loja');
 });
 
-// Rota para "Baixe o GUARDIAN"
 app.get('/baixe', (req, res) => {
   res.render('baixe');
 });
@@ -128,7 +92,6 @@ app.get('/baixe', (req, res) => {
 app.get('/topico', (req, res) => {
   res.render('topico');
 });
-
 
 // Lógica de login
 app.post('/login', (req, res) => {
@@ -138,103 +101,87 @@ app.post('/login', (req, res) => {
     return res.status(400).send('Por favor, preencha todos os campos.');
   }
 
-  // Verificar se o usuário existe no banco de dados
-  db.query('SELECT * FROM users WHERE email = ?', [email], async (err, result) => {
-    if (err) {
+  db.query('SELECT * FROM users WHERE email = $1', [email])
+    .then(async result => {
+      if (result.rows.length === 0) {
+        return res.status(400).send('Credenciais inválidas');
+      }
+
+      const user = result.rows[0];
+      const isPasswordValid = await bcrypt.compare(senha, user.password);
+      if (!isPasswordValid) {
+        return res.status(400).send('Credenciais inválidas');
+      }
+
+      res.redirect('/');
+    })
+    .catch(err => {
       console.error('Erro ao consultar banco de dados:', err);
-      return res.status(500).send('Erro no banco de dados');
-    }
-
-    if (result.length === 0) {
-      return res.status(400).send('Credenciais inválidas');
-    }
-
-    const user = result[0];
-
-    // Verificar se a senha está correta
-    const isPasswordValid = await bcrypt.compare(senha, user.password);
-    if (!isPasswordValid) {
-      return res.status(400).send('Credenciais inválidas');
-    }
-
-    res.redirect('/');
-  });
+      res.status(500).send('Erro no banco de dados');
+    });
 });
 
-
-// Lógica de registro
 app.post('/register', (req, res) => {
-  const { nome, email, senha } = req.body;
-
-  // Mapeando para os campos corretos da tabela
-  const username = nome; 
-  const password = senha; 
-
-  console.log('Corpo da requisição:', req.body);
+  console.log("Dados recebidos no cadastro:", req.body);
+  const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
     return res.status(400).send('Por favor, preencha todos os campos.');
   }
 
-  // Verificar se o usuário já existe
-  db.query('SELECT * FROM users WHERE username = ?', [username], async (err, result) => {
-    if (err) {
-      console.error('Erro ao consultar banco de dados:', err);
-      return res.status(500).send('Erro no banco de dados');
-    }
-    if (result.length > 0) {
-      return res.status(400).send('Usuário já existe');
-    }
-
-    // Criptografar a senha
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Inserir o usuário no banco de dados
-    db.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword], (err, result) => {
-      if (err) {
-        console.error('Erro ao registrar usuário:', err);
-        return res.status(500).send('Erro ao registrar usuário');
+  db.query('SELECT * FROM users WHERE username = $1', [username])
+    .then(async result => {
+      if (result.rows.length > 0) {
+        return res.status(400).send('Usuário já existe');
       }
-      res.send('Registro bem-sucedido!');
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      db.query('INSERT INTO users (username, email, password) VALUES ($1, $2, $3)', 
+        [username, email, hashedPassword])
+        .then(() => {
+          res.send('Registro bem-sucedido!');
+        })
+        .catch(err => {
+          console.error('Erro ao registrar usuário:', err);
+          res.status(500).send('Erro ao registrar usuário');
+        });
+    })
+    .catch(err => {
+      console.error('Erro ao consultar banco de dados:', err);
+      res.status(500).send('Erro no banco de dados');
     });
-  });
 });
 
+// Rota POST para estratégias
 app.post("/estrategias", (req, res) => {
-  console.log("Rota POST /estrategias chamada"); 
-  console.log("Dados recebidos:", req.body); 
   const { categoria, subcategoria, titulo, conteudo } = req.body;
 
-  // Insere o tópico no banco de dados
-  const sql = "INSERT INTO topicos (categoria, subcategoria, titulo, conteudo) VALUES (?, ?, ?, ?)";
-  db.query(sql, [categoria, subcategoria, titulo, conteudo], (err, result) => {
-    if (err) {
+  const sql = "INSERT INTO topicos (categoria, subcategoria, titulo, conteudo) VALUES ($1, $2, $3, $4)";
+  db.query(sql, [categoria, subcategoria, titulo, conteudo])
+    .then(() => {
+      res.redirect("/forum");
+    })
+    .catch(err => {
       console.error("Erro ao inserir no banco:", err);
       res.status(500).send("Erro ao criar o tópico.");
-      return;
-    }
-    console.log("Tópico criado com sucesso!");
-    res.redirect("/forum"); // Redireciona para a aba Comunidade
-  });
+    });
 });
 
+// Rota GET para estratégias
 app.get("/estrategias", (req, res) => {
-  console.log("Rota /estrategias chamada"); 
   const sql = "SELECT * FROM topicos WHERE subcategoria = 'Estratégias para vitória no Guardião'";
-  
-  db.query(sql, (err, resultados) => {
-    if (err) {
+  db.query(sql)
+    .then(result => {
+      res.render("estrategias", { topicos: result.rows });
+    })
+    .catch(err => {
       console.error("Erro ao buscar tópicos:", err);
       res.status(500).send("Erro ao buscar tópicos.");
-      return;
-    }
-    console.log("Resultados da consulta:", resultados); 
-    res.render("estrategias", { topicos: resultados });
-  });
+    });
 });
 
-
-
+// Inicialização do servidor
 app.listen(3000, () => {
   console.log('Servidor rodando na porta 3000');
 });
