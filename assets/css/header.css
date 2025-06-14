@@ -9,6 +9,8 @@ header {
   align-items: center;
   margin: 30px auto;
   flex:  1 1 100vw;
+  position: relative;
+  z-index: 1000;
 }
 
 header #logo {
@@ -58,15 +60,15 @@ nav a:hover {
   height: 42px;
   border-radius: 50%;
   
-  background-color: #cccccc25; /* Cor padrão quando não há foto */
-  border: #143714 solid 0.5px;
+  background-color: #cccccc25; 
+  border: #0d440b solid 0.5px;
   display: inline-block;
   background-size: cover;
   background-position: center;
 }
 
 .default-icon {
-  background-image: url('https://img.freepik.com/fotos-premium/icone-de-perfil-em-fundo-branco_941097-160945.jpg?w=740'); /* Ícone padrão */
+  background-image: url('https://img.freepik.com/fotos-premium/icone-de-perfil-em-fundo-branco_941097-160945.jpg?w=740'); 
 }
 
 .menu-button {
@@ -151,7 +153,7 @@ nav a:hover {
   top: 100%;
   left: 50%;
   transform: translateX(-50%); /* Centraliza o menu horizontalmente */
-  background-color: #143714;
+  background-color: #0d440b;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

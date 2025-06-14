@@ -1,36 +1,53 @@
 {{> header}}
 
-
-<body class = "topico">
+<body class="topico">
   <div class="topico-container">
-  <div class="form-container">
-    <h1>Criar Novo Tópico</h1>
-    <form id="form-topico" action="/estrategias" method="POST">
-      <label for="categoria">Escolha a categoria:</label>
-      <select id="categoria" name="categoria" required>
-        <option value="Jogadas Populares">Jogadas Populares</option>
-        <option value="Estratégias Avançadas">Estratégias Avançadas</option>
-        <option value="Ideias para o Jogo">Ideias para o Jogo</option>
-        <option value="Sugestões para Ajudar o Meio Ambiente">Sugestões para Ajudar o Meio Ambiente</option>
-      </select>
+    <div class="form-container">
+      <h1>Criar Novo Tópico</h1>
+      <form id="form-topico" action="/estrategias" method="POST" enctype="multipart/form-data">
+        
+        <label for="categoria">Escolha a categoria:</label>
+        <select id="categoria" name="categoria" required>
+          <option value="Jogadas Populares">Jogadas Populares</option>
+          <option value="Estratégias Avançadas">Estratégias Avançadas</option>
+          <option value="Ideias para o Jogo">Ideias para o Jogo</option>
+          <option value="Sugestões para Ajudar o Meio Ambiente">Sugestões para Ajudar o Meio Ambiente</option>
+        </select>
 
-      <label for="subcategoria">Escolha a subcategoria:</label>
-      <select id="subcategoria" name="subcategoria" required>
+        <label for="subcategoria">Escolha a subcategoria:</label>
+        <select id="subcategoria" name="subcategoria" required>
           <option value="">Selecione uma Subcategoria</option>
-      </select>
+        </select>
 
-      
-      <label for="titulo">Título do tópico:</label>
-      <input type="text" id="titulo" name="titulo" placeholder="Digite o título" required />
+        <label for="titulo">Título do tópico:</label>
+        <input type="text" id="titulo" name="titulo" placeholder="Digite o título" required />
 
-      <label for="conteudo">Conteúdo do tópico:</label>
-      <textarea id="conteudo" name="conteudo" placeholder="Escreva o conteúdo do tópico aqui..." rows="6" required></textarea>
+        <label for="conteudo">Conteúdo do tópico:</label>
+        <textarea id="conteudo" name="conteudo" placeholder="Escreva o conteúdo do tópico aqui..." rows="6" required></textarea>
 
-      <button type="submit">Criar Tópico</button>
-    </form>
+        <label for="tipoAnexo">Tipo de Anexo:</label>
+        <select id="tipoAnexo" name="tipoAnexo" required>
+          <option value="">Selecionar</option>
+          <option value="imagem">Imagem</option>
+          <option value="video">Vídeo</option>
+        </select>
+
+        <div id="campo-imagem" style="display: none;">
+          <label for="anexoImagem">Escolha a imagem:</label>
+          <input type="file" id="anexoImagem" name="anexo" accept="image/*">
+        </div>
+
+        <div id="campo-video" style="display: none;">
+          <label for="anexoVideo">Escolha o vídeo:</label>
+          <input type="file" id="anexoVideo" name="anexo" accept="video/*">
+        </div>
+
+        <video id="playerVideo" controls style="max-width: 100%; display: none;"></video>
+
+
+        <button type="submit">Criar Tópico</button>
+      </form>
+    </div>
   </div>
-  </div>
-  {{> footer}}
-  
 </body>
 

@@ -4,7 +4,6 @@ body.configuracoes {
   padding: 0;
   background-color: #121212;
   color: #fff;
-  
 }
 
 .container-configuracoes {
@@ -50,6 +49,7 @@ body.configuracoes {
 
 .button {
   display: inline-block;
+  margin-bottom: 5%;
   padding: 10px 20px;
   margin-top: 10px;
   background-color: #143714;
@@ -103,6 +103,7 @@ body.configuracoes {
 
 .code-input input {
   flex: 1;
+  margin-top: 2.5%;
   padding: 10px;
   border-radius: 4px;
   border: 1px solid #555;

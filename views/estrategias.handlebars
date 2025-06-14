@@ -1,24 +1,33 @@
 {{> header}}
 
-<div class="container-estrategias">
+<body class="estrategias-body">
+  <div class="container-estrategias">
     <h1>Estratégias para Vitória no Guardião</h1>
     {{log topicos}}
+
     {{#if topicos.length}}
-    <ul>
+      <ul>
         {{#each topicos}}
-        <li>
+          <li class="card-topico">
             <h2>{{titulo}}</h2>
-            <p><strong>Categoria:</strong> {{categoria}}</p>
-            <p><strong>Subcategoria:</strong> {{subcategoria}}</p>
-            <p>{{conteudo}}</p>
-        </li>
+            <p> {{conteudo}}</p>
+
+            {{#if anexo}}
+              <img src="/uploads/{{anexo}}" alt="Imagem do anexo" class="imagem-topico" />
+              <img id="previewImagem" alt="Imagem do anexo" style="max-width: 100%; display: none;" />
+            {{/if}}
+
+            <!-- Botões de ação -->
+            <div class="botoes-acoes">
+              <button class="btn-like">👍 Curtir</button>
+              <button class="btn-repostar">🔄 Repostar</button>
+              <button class="btn-reportar">⚠️ Reportar</button>
+            </div>
+          </li>
         {{/each}}
-    </ul>
+      </ul>
     {{else}}
-    <p>Nenhum tópico encontrado.</p>
+      <p>Nenhum tópico encontrado.</p>
     {{/if}}
-
-    
-</div>
-
-{{> footer}}
+  </div>
+</body>

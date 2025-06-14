@@ -6,6 +6,9 @@ const bcrypt = require('bcryptjs');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
+const multer = require('multer');
+
+app.use(express.static('public'));
 
 // Configuração do motor Handlebars
 const exphbs = create({
@@ -113,7 +116,7 @@ app.post('/login', (req, res) => {
         return res.status(400).send('Credenciais inválidas');
       }
 
-      res.redirect('/');
+      res.redirect('/?login=success');
     })
     .catch(err => {
       console.error('Erro ao consultar banco de dados:', err);
@@ -153,19 +156,37 @@ app.post('/register', (req, res) => {
     });
 });
 
-// Rota POST para estratégias
-app.post("/estrategias", (req, res) => {
-  const { categoria, subcategoria, titulo, conteudo } = req.body;
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads');
+  },
+  filename: (req, file, cb) => {
+    const uniqueName = Date.now() + '-' + file.originalname;
+    cb(null, uniqueName);
+  }
+});
 
-  const sql = "INSERT INTO topicos (categoria, subcategoria, titulo, conteudo) VALUES ($1, $2, $3, $4)";
-  db.query(sql, [categoria, subcategoria, titulo, conteudo])
-    .then(() => {
-      res.redirect("/forum");
-    })
-    .catch(err => {
-      console.error("Erro ao inserir no banco:", err);
-      res.status(500).send("Erro ao criar o tópico.");
-    });
+const upload = multer({ storage });
+
+app.use('/uploads', express.static('uploads'));
+
+// Rota POST para estratégias
+app.post("/estrategias", upload.single("anexo"), async (req, res) => {
+  const { categoria, subcategoria, titulo, conteudo, tipoAnexo } = req.body;
+  const anexo = req.file ? req.file.filename : null;
+
+  const sql = `
+    INSERT INTO topicos (categoria, subcategoria, titulo, conteudo, anexo, tipo_anexo)
+    VALUES ($1, $2, $3, $4, $5, $6)
+  `;
+
+  try {
+    await db.query(sql, [categoria, subcategoria, titulo, conteudo, anexo, tipoAnexo]);
+    res.redirect("/forum");
+  } catch (err) {
+    console.error("Erro ao inserir no banco:", err.message);
+    res.status(500).send("Erro ao criar o tópico.");
+  }
 });
 
 // Rota GET para estratégias
@@ -182,6 +203,6 @@ app.get("/estrategias", (req, res) => {
 });
 
 // Inicialização do servidor
-app.listen(3000, () => {
-  console.log('Servidor rodando na porta 3000');
+app.listen(3001, () => {
+  console.log('Servidor rodando na porta 3001');
 });

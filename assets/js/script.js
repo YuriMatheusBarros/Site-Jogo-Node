@@ -1,71 +1,6 @@
-document.addEventListener("DOMContentLoaded", function () {
-  
-  const openMenu = document.getElementById("openMenu");
-  const closeMenu = document.getElementById("closeMenu");
-  const menu = document.getElementById("menu");
-
-  // Abre o menu
-  openMenu.addEventListener("click", function () {
-    menu.style.transform = "translateX(0)";
-    openMenu.style.display = "none"; 
-  });
-
-  // Fecha o menu
-  closeMenu.addEventListener("click", function () {
-    menu.style.transform = "translateX(-100%)";
-    openMenu.style.display = "block"; 
-  });
-
-  // Controle do carrossel
-  const carouselSlide = document.querySelector('.carousel-slide');
-  const slides = document.querySelectorAll('.carousel-slide img');
-  const indicators = document.querySelectorAll('.indicator');
-  let currentIndex = 0;
-  let autoPlayInterval;
-
-  // Função para atualizar o carrossel
-  function updateCarousel(index) {
-    currentIndex = index;
-    carouselSlide.style.transform = `translateX(${-currentIndex * 100}%)`;
-    updateIndicators();
-  }
-
-  // Função para atualizar os indicadores
-  function updateIndicators() {
-    indicators.forEach((indicator, idx) => {
-      if (idx === currentIndex) {
-        indicator.classList.add('active');
-      } else {
-        indicator.classList.remove('active');
-      }
-    });
-  }
-
-  // Inicia o autoplay (troca de slide automaticamente)
-  function startAutoPlay() {
-    autoPlayInterval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % slides.length; // Próximo slide
-      updateCarousel(currentIndex);
-    }, 3000); 
-  }
-
-  // Para o autoplay
-  function stopAutoPlay() {
-    clearInterval(autoPlayInterval);
-  }
-
-
-  carouselSlide.addEventListener('mouseenter', stopAutoPlay); 
-  carouselSlide.addEventListener('mouseleave', startAutoPlay); 
-
-  // Inicia o carrossel e o autoplay automaticamente
-  updateCarousel(0);
-  startAutoPlay();
-  stopAutoPlay();
-});
 
 function redirecionarGreenpeace() {
-  window.open("https://doe.greenpeace.org.br/institucional-google-paid?cc=701Pm00000DislBIAR&utm_source=google&utm_medium=paid&utm_campaign=institucional&utm_content=aq_search&gad_source=1&gclid=Cj0KCQiAvbm7BhC5ARIsAFjwNHuzREayYy-YK-aXFHlCZOylKRwfGOfvRFwmp_8RHOA1sBAc4NZeiNUaAqGyEALw_wcB", "_blank");
+  window.open("https://doe.greenpeace.org.br/?utm_source=google&utm_medium=paid&utm_campaign=institucional&utm_content=fichaA&utm_term=doar&cc=701Pm00000U3xDeIAJ&gad_source=1&gbraid=0AAAAAD4RlhZAzRkfOR-naOYh-8knsQDGv&gclid=Cj0KCQjw5azABhD1ARIsAA0WFUGELVRECtkmp7gR-2zEVI4FnG6u3HViEUrp52NbOLq3VFY4A1YLP0gaAhkUEALw_wcB", "_blank");
 }
 
 function redirecionarWWF() {
@@ -118,6 +53,7 @@ document.getElementById('categoria').addEventListener('change', function() {
       ];
   } else if (categoria === 'Sugestões para Ajudar o Meio Ambiente') {
       var options = [
+          'Desafios de engajamento ambiental',
           'Problemas ambientais',
           'Iniciativas de reciclagem',
           'Outras organizações para doar'
@@ -132,3 +68,43 @@ document.getElementById('categoria').addEventListener('change', function() {
       subcategoriaSelect.appendChild(option);
   });
 });
+
+const tipoAnexo = document.getElementById('tipoAnexo');
+  const campoImagem = document.getElementById('campo-imagem');
+  const campoVideo = document.getElementById('campo-video');
+  const anexoVideo = document.getElementById('anexoVideo');
+  const playerVideo = document.getElementById('playerVideo');
+  
+  tipoAnexo.addEventListener('change', () => {
+    const valor = tipoAnexo.value;
+    if (valor === 'imagem') {
+      campoImagem.style.display = 'block';
+      campoVideo.style.display = 'none';
+      playerVideo.style.display = 'none';
+      playerVideo.src = '';
+    } else if (valor === 'video') {
+      campoImagem.style.display = 'none';
+      campoVideo.style.display = 'block';
+      playerVideo.style.display = 'none';
+      playerVideo.src = '';
+    } else {
+      campoImagem.style.display = 'none';
+      campoVideo.style.display = 'none';
+      playerVideo.style.display = 'none';
+      playerVideo.src = '';
+    }
+  });
+
+  anexoVideo.addEventListener('change', () => {
+    const file = anexoVideo.files[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      playerVideo.src = url;
+      playerVideo.style.display = 'block';
+      playerVideo.load();
+      // Não chama play(), para só iniciar com clique do usuário
+    } else {
+      playerVideo.style.display = 'none';
+      playerVideo.src = '';
+    }
+  });

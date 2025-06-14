@@ -6,7 +6,7 @@
 }
 
 body.loja {
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .loja-guardian {

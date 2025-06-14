@@ -1,20 +1,11 @@
-
 footer {
-	/* Altura do elemento. */
-	max-height: 20px;
-	
-
-	/* Junção de flex-grow, flex-shrink e flex-basis.  */
-	/* flex-grow – Habilidade de um flex item crescer. */
-	/* flex-shrink - Capacidade de redução do item.    */
-	/* flex-basis – Tamanho inicial do item.           */
-	flex: 1 1 100vw;
-}
-
-a {
-	/* Remove a decoração padrão do elemento. */
-	text-decoration: none;
-
-	/* Definir a cor da fonte para o padrão do elemento pai. */
-	color: inherit;
+  background-color: #2c3e501e; /* Azul escuro para o footer */
+  color: #ecf0f1; /* Texto claro */
+  text-align: center;
+  align-content: center;
+  width: 100vh; /* Garante que o footer ocupe toda a largura */
+  position: relative; /* Fixa o footer na parte inferior */
+  bottom: 0; /* Alinha o footer ao final da página */
+  left: 0; /* Garante que o footer fique alinhado à esquerda */
+  padding: 5px 0; /* Reduz a altura do background */
 }

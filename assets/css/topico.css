@@ -3,16 +3,17 @@ body.topico {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: auto;
 }
 
 
 .topico-container {
-  margin-top: 5%;
   margin-bottom: 150px;
 }
 
 /* Container do Formulário */
 .form-container {
+  
   background-color: rgba(0, 0, 0, 0.7);
   padding: 20px 30px;
   border-radius: 10px;

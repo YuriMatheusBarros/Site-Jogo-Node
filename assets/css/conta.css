@@ -13,6 +13,7 @@ body.conta {
 
 .perfil-header {
   width: 100%;
+  z-index: 0;
   text-align: center;
   padding: 80px;
   background-color: #283847;
@@ -21,7 +22,6 @@ body.conta {
 
 .perfil-container {
   display: flex;
-  
   align-items: center;
   justify-content: center;
   gap: 50px;

@@ -3,20 +3,20 @@ html, body.forum {
   min-height: 100vh;
   max-height: 100vh;
   margin: 0;
-  
+  overflow-x: hidden;
   font-family: Arial, sans-serif;
+  display: flex;
   /* Cor de fundo escura */
   color: #fff; /* Texto branco para contraste */
   
 }
 
 .user-footer {
-  padding: 20px 0;
+  padding: 10px 0;
   position: relative;
   top: 0;
-  margin-top: -100px;
   width: 100%;
-  z-index: 1000; /* Garante que o footer fique acima dos outros elementos */
+  z-index: 0; 
 }
 
 .user-footer .container-forum {
@@ -44,6 +44,7 @@ html, body.forum {
 .user-footer .search-form button {
   background-color: #ffcc00;
   border: none;
+  margin-top: 2px;
   padding: 8px 12px;
   margin-left: 10px;
   border-radius: 5px;
@@ -66,11 +67,13 @@ html, body.forum {
 }
 
 /* Main container */
+
 main {
-  display: flex;
-  flex-direction: column;
-  margin-top: -65px;
+  height: calc(100vh - 224px);
+  flex: 1 1 200px;
+  height: auto;
 }
+
 
 /* O conteúdo é limitado em largura e centralizado */
 .container-forum {
