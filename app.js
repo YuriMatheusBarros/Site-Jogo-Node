@@ -8,16 +8,19 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 
-app.use(express.static('public'));
-
-// Configuração do motor Handlebars
-const exphbs = create({
+const hbs = create({
   defaultLayout: 'main',
-  partialsDir: path.join(__dirname, 'views/partials')
+  partialsDir: path.join(__dirname, 'views/partials'),
+  helpers: {
+    eq: (a, b) => a === b
+  }
 });
 
-app.engine('handlebars', exphbs.engine);
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
+app.use(express.static('public'));
+
 
 // Conexão com o banco de dados PostgreSQL
 const db = new Pool({
@@ -195,6 +198,45 @@ app.get("/estrategias", (req, res) => {
   db.query(sql)
     .then(result => {
       res.render("estrategias", { topicos: result.rows });
+    })
+    .catch(err => {
+      console.error("Erro ao buscar tópicos:", err);
+      res.status(500).send("Erro ao buscar tópicos.");
+    });
+});
+// Rota POST para desafios
+app.post("/desafios", upload.single("anexo"), async (req, res) => {
+  const { categoria, subcategoria, titulo, conteudo, tipoAnexo } = req.body;
+  const anexo = req.file ? req.file.filename : null;
+
+  const sql = `
+    INSERT INTO topicos (categoria, subcategoria, titulo, conteudo, anexo, tipo_anexo)
+    VALUES ($1, $2, $3, $4, $5, $6)
+  `;
+
+  try {
+    await db.query(sql, [categoria, subcategoria, titulo, conteudo, anexo, tipoAnexo]);
+    res.redirect("/forum");
+  } catch (err) {
+    console.error("Erro ao inserir no banco:", err.message);
+    res.status(500).send("Erro ao criar o tópico.");
+  }
+});
+
+// Rota GET para desafios
+app.get("/desafios", (req, res) => {
+  const sql = "SELECT * FROM topicos WHERE subcategoria = 'Desafios de engajamento ambiental'";
+  db.query(sql)
+    .then(result => {
+      const topicos = result.rows.map(topico => {
+        if (topico.anexo) {
+          topico.tipo = topico.anexo.endsWith('.mp4') ? 'video' : 'imagem';
+        } else {
+          topico.tipo = null;
+        }
+        return topico;
+      });
+      res.render("desafios", { topicos });
     })
     .catch(err => {
       console.error("Erro ao buscar tópicos:", err);

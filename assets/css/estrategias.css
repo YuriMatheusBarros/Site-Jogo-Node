@@ -138,6 +138,15 @@ body.estrategias-body {
   transition: background-color 0.2s;
   color: white;
 }
+
+.botoes-acoes > div {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.botoes-acoes button:hover {
+  opacity: 0.9;
+}
 /* Botão Curtir */
 .btn-like {
   background-color: #27ae60;
@@ -163,6 +172,14 @@ body.estrategias-body {
 
 .btn-reportar:hover {
   background-color: #e74c3c;
+}
+
+.btn-comentar {
+  background-color: #8e44ad;
+}
+
+.btn-comentar:hover {
+  background-color: #9b59b6;
 }
 
 /* Responsividade */

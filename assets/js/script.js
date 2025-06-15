@@ -76,23 +76,23 @@ const tipoAnexo = document.getElementById('tipoAnexo');
   const playerVideo = document.getElementById('playerVideo');
   
   tipoAnexo.addEventListener('change', () => {
-    const valor = tipoAnexo.value;
-    if (valor === 'imagem') {
-      campoImagem.style.display = 'block';
-      campoVideo.style.display = 'none';
-      playerVideo.style.display = 'none';
-      playerVideo.src = '';
-    } else if (valor === 'video') {
-      campoImagem.style.display = 'none';
-      campoVideo.style.display = 'block';
-      playerVideo.style.display = 'none';
-      playerVideo.src = '';
-    } else {
-      campoImagem.style.display = 'none';
-      campoVideo.style.display = 'none';
-      playerVideo.style.display = 'none';
-      playerVideo.src = '';
-    }
+  const valor = tipoAnexo.value;
+  if (valor === 'imagem') {
+    campoImagem.style.display = 'block';
+    campoVideo.style.display = 'none';
+    playerVideo.style.display = 'none';
+    playerVideo.src = '';
+  } else if (valor === 'video') {
+    campoImagem.style.display = 'none';
+    campoVideo.style.display = 'block';
+    playerVideo.style.display = 'none';
+    playerVideo.src = '';
+  } else {
+    campoImagem.style.display = 'none';
+    campoVideo.style.display = 'none';
+    playerVideo.style.display = 'none';
+    playerVideo.src = '';
+  }
   });
 
   anexoVideo.addEventListener('change', () => {

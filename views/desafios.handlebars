@@ -1,0 +1,48 @@
+{{> header}}
+
+<body class="estrategias-body">
+  <div class="container-estrategias">
+    <h1>Desafios de engajamento ambiental</h1>
+    {{log topicos}}
+
+    {{#if topicos.length}}
+      <ul>
+        {{#each topicos}}
+          <li class="card-topico {{#unless anexo}}sem-anexo{{/unless}}">
+            <h2>{{titulo}}</h2>
+            <p>{{conteudo}}</p>
+
+            {{#if anexo}}
+              {{#if (eq tipo "video")}}
+                <video controls class="video-topico">
+                  <source src="/uploads/{{anexo}}" type="video/mp4">
+                  Seu navegador não suporta vídeo.
+                </video>
+              {{else}}
+                <img src="/uploads/{{anexo}}" alt="Imagem do anexo" class="imagem-topico" />
+              {{/if}}
+            {{/if}}
+
+            <!-- Botões e contadores fictícios -->
+            <div class="botoes-acoes">
+              <div>
+                <button class="btn-like">👍 Curtir</button>
+              </div>
+              <div>
+                <button class="btn-repostar">🔄 Repostar</button>
+              </div>
+              <div>
+                <button class="btn-comentar">💬 Comentar</button>
+              </div>
+              <div>
+                <button class="btn-reportar">⚠️ Reportar</button>
+              </div>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p>Nenhum tópico encontrado.</p>
+    {{/if}}
+  </div>
+</body>
