@@ -126,11 +126,11 @@ body.estrategias-body {
 }
 
 .botoes-acoes button {
-  flex: 1 1 auto;
+  flex: 1 1 auto; 
   position: relative;
   bottom: 0;
-  padding: 4px 5px;
-  font-size: 0.85rem;
+  padding: 2px 4px;
+  font-size: 0.75rem;
   border: none;
   border-radius: 4px;
   font-weight: 450;
@@ -180,6 +180,27 @@ body.estrategias-body {
 
 .btn-comentar:hover {
   background-color: #9b59b6;
+}
+
+.usuario-topico {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.avatar-usuario {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* deixa o avatar redondo */
+  object-fit: cover;
+  border: 2px solid #f39c12;; /* opcional: contorno branco */
+}
+
+.nome-usuario {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #ecf0f1; /* tom claro para fundo escuro */
 }
 
 /* Responsividade */
