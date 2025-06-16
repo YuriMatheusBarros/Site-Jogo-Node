@@ -99,6 +99,10 @@ app.get('/topico', (req, res) => {
   res.render('topico');
 });
 
+app.get('/transparencia', (req, res) => {
+  res.render('transparencia');
+});
+
 // Lógica de login
 app.post('/login', (req, res) => {
   const { email, senha } = req.body;

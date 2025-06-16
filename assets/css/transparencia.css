@@ -1,0 +1,132 @@
+
+.body-dashboard {
+  margin: 0;
+  background-color: #0f172a;
+  overflow: hidden;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-center {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0; /* sem padding extra */
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-top: -5%;
+}
+
+.dashboard-doacao {
+  max-width: 70vw;
+  width: 100%;
+  background-color: #a4482600;
+  color: white;
+  padding: 2.5vw 2vw; /* reduzido */
+  border-radius: 1.5vw;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 0 1.5vw rgba(255, 255, 255, 0.05);
+  font-size: 0.95rem;
+  margin: 0; /* remove margem extra */
+}
+
+.titulo {
+  color: #facc15;
+  font-weight: bold;
+  margin-bottom: 2vw;
+  font-size: 1.8vw;
+}
+
+.titulo span {
+  color: #ffa500;
+}
+
+.descricao {
+  font-size: 1.2vw;
+  margin-bottom: 1.5vw;
+  color: #ffffff;
+}
+
+.bloco-arrecadado, .bloco-doacao {
+  background-color: #0e1a0f5e;
+  padding: 1vw;
+  border-radius: 1vw;
+  margin-bottom: 1vw;
+}
+
+.label {
+  font-size: 1vw;
+  color: #ffffff;
+  margin-bottom: 0.5vw;
+}
+
+.valor {
+  font-size: 2vw;
+  font-weight: bold;
+}
+
+.valor.doacao {
+  color: #22c55e;
+}
+
+.relatorio h3 {
+  font-size: 1.3vw;
+  margin-bottom: 0.5vw;
+}
+
+.relatorio ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1vw;
+}
+
+.relatorio li {
+  margin-bottom: 0.3vw;
+  color: #ffffff;
+}
+
+.link-relatorio {
+  color: #facc15;
+  font-size: 1.5vw;
+  padding: 1vw 2vw;
+  border-radius: 0.8vw;
+  transition: background 0.2s, color 0.2s;
+  display: inline-block;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link-relatorio:hover {
+  text-decoration: underline;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 600px) {
+  .dashboard-doacao {
+    padding: 8vw 3vw;
+    font-size: 1rem;
+    border-radius: 4vw;
+  }
+  .titulo {
+    font-size: 5vw;
+    margin-bottom: 8vw;
+  }
+  .bloco-arrecadado, .bloco-doacao {
+    padding: 4vw;
+    border-radius: 3vw;
+  }
+  .label, .relatorio h3, .valor {
+    font-size: 3.5vw;
+  }
+  .link-relatorio {
+    font-size: 4vw;
+    padding: 3vw 5vw;
+    border-radius: 2vw;
+  }
+}
