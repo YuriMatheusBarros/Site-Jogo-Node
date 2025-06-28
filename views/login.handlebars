@@ -1,9 +1,15 @@
-
 {{> header}}
 
 <body id="pagina-login">
   <main class="container-login">
     <h1 class="titulo-login">Entrar</h1>
+
+    {{#if message}}
+      {{#if (eq message "login_success")}}
+        <p class="mensagem-sucesso">Login realizado com sucesso!</p>
+      {{/if}}
+    {{/if}}
+
     <form class="formulario-login" action="/login" method="POST">
       <label for="email-login">E-mail</label>
       <input type="email" id="email-login" name="email" required>
@@ -11,12 +17,9 @@
       <input type="password" id="senha-login" name="senha" required>
       <button type="submit" class="botao-login">Entrar</button>
     </form>
+
     <p class="link-registro">
-      Ainda não tem uma conta? <a href="/register"> <a href="./register"> <u>Cadastre-se</u></a>
+      Ainda não tem uma conta? <a href="/register"><u>Cadastre-se</u></a>
     </p>
   </main>
 </body>
-
-
-  
-

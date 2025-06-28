@@ -46,17 +46,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/register', (req, res) => {
-  res.render('register', {
-    title: 'Registrar',
-    description: 'Crie uma conta para acessar o site.'
-  });
+  const { message } = req.query;
+  res.render('register', { message });
 });
 
 app.get('/login', (req, res) => {
-  res.render('login', {
-    title: 'Login',
-    description: 'Faça login para acessar sua conta.'
-  });
+  const { message } = req.query;
+  res.render('login', { message });
 });
 
 app.get('/informacoes', (req, res) => {
@@ -123,7 +119,7 @@ app.post('/login', (req, res) => {
         return res.status(400).send('Credenciais inválidas');
       }
 
-      res.redirect('/?login=success');
+      res.redirect('/login?message=login_success');
     })
     .catch(err => {
       console.error('Erro ao consultar banco de dados:', err);
@@ -150,7 +146,7 @@ app.post('/register', (req, res) => {
       db.query('INSERT INTO users (username, email, password) VALUES ($1, $2, $3)', 
         [username, email, hashedPassword])
         .then(() => {
-          res.send('Registro bem-sucedido!');
+          res.redirect('/register?message=register_success');
         })
         .catch(err => {
           console.error('Erro ao registrar usuário:', err);

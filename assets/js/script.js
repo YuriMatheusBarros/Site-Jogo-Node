@@ -108,3 +108,12 @@ const tipoAnexo = document.getElementById('tipoAnexo');
       playerVideo.src = '';
     }
   });
+  const mensagem = document.querySelector('.mensagem-sucesso');
+  console.log('Mensagem:', mensagem);
+  if (mensagem) {
+    setTimeout(() => {
+      mensagem.style.transition = "opacity 0.5s ease";
+      mensagem.style.opacity = "0";
+      setTimeout(() => mensagem.remove(), 500);
+    }, 4000);
+}

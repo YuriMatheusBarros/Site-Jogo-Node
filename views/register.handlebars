@@ -1,9 +1,14 @@
-
- 
 <body id="pagina-registro">
-   {{> header}}
+  {{> header}}
   <main class="container-registro">
     <h1 class="titulo-registro">Registrar</h1>
+
+    {{#if message}}
+      {{#if (eq message "register_success")}}
+        <p class="mensagem-sucesso">Cadastro realizado com sucesso!</p>
+      {{/if}}
+    {{/if}}
+
     <form class="formulario-registro" action="/register" method="POST">
       <label for="username-registro">Nome Completo</label>
       <input type="text" id="username-registro" name="username" required>
@@ -13,9 +18,9 @@
       <input type="password" id="senha-registro" name="password" required>
       <button type="submit" class="botao-registro">Cadastrar</button>
     </form>
+
     <p class="link-login">
-      Já tem uma conta? <a href="/login"> <u>Faça login</u></a>
+      Já tem uma conta? <a href="/login"><u>Faça login</u></a>
     </p>
   </main>
 </body>
-
